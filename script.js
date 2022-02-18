@@ -1,4 +1,4 @@
-// computerPlay Function Returns rock paper or sissors, with a 1/3 chance for each.
+// Returns rock paper or sissors, with a 1/3 chance for each.
 function computerPlay() {
     chance = Math.random()
     if (chance <= .33) {
@@ -9,23 +9,51 @@ function computerPlay() {
         return "sissors"
     }
 }
-// playRound Function Takes playerSelection and computerSelection and returns result as a string.
-// caseFormater Function Formats playerSelctions case and checks for valid options.
+// Formats playerSelctions case and checks for valid options.
 function playerPlay() {
     selection = prompt()
     selection = selection.toLowerCase()
     if (selection == "rock") {
-        playerSelection = "rock"
+        return "rock"
     } else if (selection == "paper") {
-        playerSelection = "paper"
+        return "paper"
     } else if (selection == "sissors") {
-        playerSelection = "sissors"
+        return "sissors"
     } else {
         console.log("Invalid selection")
-        playerPlay()
+        return playerPlay()
+    }
+}
+// Takes playerSelection and computerSelection and returns result as a string.
+function playRound(playerSelction, computerSelection) {
+    console.log(`You selected ${playerSelction}, the computer selected ${computerSelection}.`)
+    if (playerSelction == "rock"){
+        if (computerSelection == "rock"){
+            console.log("You tie! Rock is equal to rock!")
+        } else if (computerSelection == "paper"){
+            console.log("You lose! Paper beats rock!")
+        } else if (computerSelection == "sissors") {
+            console.log("You win! Rock beats sissors!")
+        }
+    } else if (playerSelection == "paper") {
+        if (computerSelection == "rock") {
+            console.log("You win! Paper beats rock")
+        } else if (computerSelection == "paper"){
+            console.log("You tie! Paper is equal to paper!")
+        } else if (computerSelection == "sissors") {
+            console.log("You lose! Sissors beats paper!")
+        }
+    } else if (playerSelction == "sissors") {
+        if (computerSelection == "rock") {
+            console.log("You lose! Rock beats sissors!")
+        } else if (computerSelection == "paper") {
+            console.log("You win! Sissors beats paper!")
+        } if (computerSelection == "sissors"){
+            console.log("You tie! Paper is equal to paper!")
+        }
     }
 }
 // game Function Repeats playRound five times and prints tallied score at the end.
-playerSelection = '';
-playerPlay()
-console.log(playerSelection)
+playerSelection = playerPlay();
+computerSelection = computerPlay();
+playRound(playerSelection, computerSelection)
