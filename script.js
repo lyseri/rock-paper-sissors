@@ -26,7 +26,7 @@ function playerPlay() {
 }
 // Takes playerSelection and computerSelection and returns result as a string while tallying score.
 function playRound(playerSelection, computerSelection) {
-    console.log(`You selected ${playerSelection}, the computer selected ${computerSelection}.`);
+    text.textContent = `You selected ${playerSelection}, the computer selected ${computerSelection}.`;
     if (playerSelection == "rock") {
         if (computerSelection == "rock") {
             return "This round is a tie! Rock is equal to rock!";
@@ -59,7 +59,7 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
-// Repeats playRound five times and prints tallied score at the end.
+// Repeats playRound five times and prints tallied score at the end. (Console)
 function game() {
     console.log("Rock, paper, sissors, best of five!");
     for (let i = 0; i < 5; i++) {
@@ -74,26 +74,24 @@ function game() {
         console.log("The Computer wins!")
     }
 }
-
+// Checks score for winner
 function scoreChecker() {
     if (player == 5) {
         player = 0;
         computer = 0;
         text.textContent = "You win the game!";
-        score.textContent = '';
+        score.textContent = `(Player:${player}|Computer:${computer})`;
     } else if (computer == 5) {
         player = 0;
         computer = 0;
         text.textContent = "You lose the game!";
-        score.textContent = '';  
+        score.textContent = `(Player:${player}|Computer:${computer})`;
     }
 }
 
 // Score keeping global variables
 player = 0;
 computer = 0;
-// Game start
-// game();
 
 const text = document.getElementById('text-box');
 const score = document.getElementById('score');
