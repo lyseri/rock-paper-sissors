@@ -25,9 +25,9 @@ function playerPlay() {
     }
 }
 // Takes playerSelection and computerSelection and returns result as a string while tallying score.
-function playRound(playerSelction, computerSelection) {
-    console.log(`You selected ${playerSelction}, the computer selected ${computerSelection}.`)
-    if (playerSelction == "rock") {
+function playRound(playerSelection, computerSelection) {
+    console.log(`You selected ${playerSelection}, the computer selected ${computerSelection}.`)
+    if (playerSelection == "rock") {
         if (computerSelection == "rock") {
             return "You tie! Rock is equal to rock!";
         } else if (computerSelection == "paper") {
@@ -47,7 +47,7 @@ function playRound(playerSelction, computerSelection) {
             computer += 1;
             return "You lose! Sissors beats paper!";
         }
-    } else if (playerSelction == "sissors") {
+    } else if (playerSelection == "sissors") {
         if (computerSelection == "rock") {
             computer += 1;
             return "You lose! Rock beats sissors!";
@@ -55,7 +55,7 @@ function playRound(playerSelction, computerSelection) {
             player += 1;
             return "You win! Sissors beats paper!";
         } if (computerSelection == "sissors") {
-            return "You tie! Paper is equal to paper!";
+            return "You tie! Sissors is equal to sissors!";
         }
     }
 }
@@ -74,8 +74,34 @@ function game() {
         console.log("The Computer wins!")
     }
 }
+
 // Score keeping global variables
-player = 0
-computer = 0
+player = 0;
+computer = 0;
 // Game start
 // game();
+
+const text = document.getElementById('text-box');
+const score = document.getElementById('score');
+
+// Uses click as playerSelection result
+const rock = document.querySelector("#rock");
+rock.addEventListener('click', () => {
+    computerSelection = computerPlay();
+    text.textContent = playRound('rock', computerSelection);
+    score.textContent = `(Player:${player}|Computer:${computer})`;
+})
+
+const paper = document.querySelector("#paper");
+paper.addEventListener('click', () => {
+    computerSelection = computerPlay();
+    text.textContent = playRound('paper', computerSelection);
+    score.textContent = `(Player:${player}|Computer:${computer})`;
+})
+
+const sissors = document.querySelector("#sissors");
+sissors.addEventListener('click', () => {
+    computerSelection = computerPlay();
+    text.textContent = playRound('sissors', computerSelection);
+    score.textContent = `(Player:${player}|Computer:${computer})`;
+})

@@ -1,9 +1,6 @@
-h1 {
+body {
     display: flex;
+    flex-flow: column;
     justify-content: center;
-}
-
-#container {
-    display: flex;
-    justify-content: center;
+    align-items: center;
 }
