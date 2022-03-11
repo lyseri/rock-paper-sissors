@@ -26,36 +26,36 @@ function playerPlay() {
 }
 // Takes playerSelection and computerSelection and returns result as a string while tallying score.
 function playRound(playerSelection, computerSelection) {
-    console.log(`You selected ${playerSelection}, the computer selected ${computerSelection}.`)
+    console.log(`You selected ${playerSelection}, the computer selected ${computerSelection}.`);
     if (playerSelection == "rock") {
         if (computerSelection == "rock") {
-            return "You tie! Rock is equal to rock!";
+            return "This round is a tie! Rock is equal to rock!";
         } else if (computerSelection == "paper") {
             computer += 1;
-            return "You lose! Paper beats rock!";
+            return "You lose this round! Paper beats rock!";
         } else if (computerSelection == "sissors") {
             player += 1;
-            return "You win! Rock beats sissors!";
+            return "You win this round! Rock beats sissors!";
         }
     } else if (playerSelection == "paper") {
         if (computerSelection == "rock") {
             player += 1;
-            return "You win! Paper beats rock";
+            return "You win this round! Paper beats rock";
         } else if (computerSelection == "paper") {
-            return "You tie! Paper is equal to paper!";
+            return "This round is a tie! Paper is equal to paper!";
         } else if (computerSelection == "sissors") {
             computer += 1;
-            return "You lose! Sissors beats paper!";
+            return "You lose this round! Sissors beats paper!";
         }
     } else if (playerSelection == "sissors") {
         if (computerSelection == "rock") {
             computer += 1;
-            return "You lose! Rock beats sissors!";
+            return "You lose this round! Rock beats sissors!";
         } else if (computerSelection == "paper") {
             player += 1;
-            return "You win! Sissors beats paper!";
+            return "You win this round! Sissors beats paper!";
         } if (computerSelection == "sissors") {
-            return "You tie! Sissors is equal to sissors!";
+            return "This round is a tie! Sissors is equal to sissors!";
         }
     }
 }
@@ -75,6 +75,20 @@ function game() {
     }
 }
 
+function scoreChecker() {
+    if (player == 5) {
+        player = 0;
+        computer = 0;
+        text.textContent = "You win the game!";
+        score.textContent = '';
+    } else if (computer == 5) {
+        player = 0;
+        computer = 0;
+        text.textContent = "You lose the game!";
+        score.textContent = '';  
+    }
+}
+
 // Score keeping global variables
 player = 0;
 computer = 0;
@@ -90,6 +104,7 @@ rock.addEventListener('click', () => {
     computerSelection = computerPlay();
     text.textContent = playRound('rock', computerSelection);
     score.textContent = `(Player:${player}|Computer:${computer})`;
+    scoreChecker();
 })
 
 const paper = document.querySelector("#paper");
@@ -97,6 +112,7 @@ paper.addEventListener('click', () => {
     computerSelection = computerPlay();
     text.textContent = playRound('paper', computerSelection);
     score.textContent = `(Player:${player}|Computer:${computer})`;
+    scoreChecker();
 })
 
 const sissors = document.querySelector("#sissors");
@@ -104,4 +120,5 @@ sissors.addEventListener('click', () => {
     computerSelection = computerPlay();
     text.textContent = playRound('sissors', computerSelection);
     score.textContent = `(Player:${player}|Computer:${computer})`;
+    scoreChecker();
 })
