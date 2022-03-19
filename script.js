@@ -80,13 +80,17 @@ function scoreChecker() {
         player = 0;
         computer = 0;
         text.textContent = "You win the game!";
-        score.textContent = `(Player:${player}|Computer:${computer})`;
+        score.textContent = scoreReturn();
     } else if (computer == 5) {
         player = 0;
         computer = 0;
         text.textContent = "You lose the game!";
-        score.textContent = `(Player:${player}|Computer:${computer})`;
+        score.textContent = scoreReturn();
     }
+}
+// Returns new score
+function scoreReturn() {
+    return `| Player: ${player} | Computer: ${computer} |`
 }
 
 // Score keeping global variables
@@ -101,7 +105,7 @@ const rock = document.querySelector("#rock");
 rock.addEventListener('click', () => {
     computerSelection = computerPlay();
     text.textContent = playRound('rock', computerSelection);
-    score.textContent = `(Player:${player}|Computer:${computer})`;
+    score.textContent = scoreReturn();
     scoreChecker();
 })
 
@@ -109,7 +113,7 @@ const paper = document.querySelector("#paper");
 paper.addEventListener('click', () => {
     computerSelection = computerPlay();
     text.textContent = playRound('paper', computerSelection);
-    score.textContent = `(Player:${player}|Computer:${computer})`;
+    score.textContent = scoreReturn();
     scoreChecker();
 })
 
@@ -117,6 +121,6 @@ const sissors = document.querySelector("#sissors");
 sissors.addEventListener('click', () => {
     computerSelection = computerPlay();
     text.textContent = playRound('sissors', computerSelection);
-    score.textContent = `(Player:${player}|Computer:${computer})`;
+    score.textContent = scoreReturn();
     scoreChecker();
 })
